@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,23 +35,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQ2-Q8-drM">
-                                <rect key="frame" x="149.5" y="426" width="115" height="44"/>
-                                <color key="backgroundColor" systemColor="systemGray3Color"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Weather">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="tappedWeatherButton:" destination="ASS-XL-zEs" eventType="touchUpInside" id="xoE-Qc-rnp"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="CAB-bm-h0d" userLabel="Main Stack View">
+                                <rect key="frame" x="20" y="113" width="374" height="620"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="zLQ-Zi-1ND" userLabel="Destination Weather Info">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="227"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bco-5q-MLu" userLabel="Destination City  Name Label">
+                                                <rect key="frame" x="132.5" y="0.0" width="109.5" height="29"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfZ-YD-1BQ" userLabel="Destination Temperature Label">
+                                                <rect key="frame" x="167.5" y="99" width="39" height="29"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWH-Qb-Vnd" userLabel="Destination Description Label">
+                                                <rect key="frame" x="73.5" y="198" width="227.5" height="29"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.015876922759999999" green="0.39590930940000002" blue="0.60375118260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQ2-Q8-drM">
+                                        <rect key="frame" x="0.0" y="287" width="374" height="46"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="arrow.clockwise" catalog="system" symbolScale="large"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="tappedWeatherButton:" destination="ASS-XL-zEs" eventType="touchUpInside" id="xoE-Qc-rnp"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="TVM-dH-aT2" userLabel="Origin Weather Info">
+                                        <rect key="frame" x="0.0" y="393" width="374" height="227"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc8-Ik-7JG" userLabel="Origin City Name Label">
+                                                <rect key="frame" x="158.5" y="0.0" width="57" height="29"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YqZ-Q6-43P" userLabel="Origin Temperature Label ">
+                                                <rect key="frame" x="167.5" y="99" width="39" height="29"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rw0-ad-SgH" userLabel="Origin Description Label">
+                                                <rect key="frame" x="73.5" y="198" width="227.5" height="29"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zLQ-Zi-1ND" firstAttribute="centerX" secondItem="CAB-bm-h0d" secondAttribute="centerX" id="Ami-LA-hqa"/>
+                                    <constraint firstItem="PQ2-Q8-drM" firstAttribute="centerX" secondItem="CAB-bm-h0d" secondAttribute="centerX" id="hhL-zd-81S"/>
+                                    <constraint firstItem="TVM-dH-aT2" firstAttribute="centerX" secondItem="CAB-bm-h0d" secondAttribute="centerX" id="qZm-29-eNS"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azv-NI-WYm">
+                                <rect key="frame" x="160" y="64" width="94.5" height="29"/>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XlT-xK-ZLg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.53725490200000003" green="0.81960784310000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PQ2-Q8-drM" firstAttribute="centerX" secondItem="hGe-NW-H4z" secondAttribute="centerX" id="6SA-Eg-mVT"/>
-                            <constraint firstItem="PQ2-Q8-drM" firstAttribute="centerY" secondItem="hGe-NW-H4z" secondAttribute="centerY" id="XDz-fl-rmC"/>
+                            <constraint firstItem="CAB-bm-h0d" firstAttribute="leading" secondItem="XlT-xK-ZLg" secondAttribute="leading" constant="20" id="6Dv-Vx-c2D"/>
+                            <constraint firstItem="azv-NI-WYm" firstAttribute="top" secondItem="XlT-xK-ZLg" secondAttribute="top" constant="20" id="8Dh-Qq-fZD"/>
+                            <constraint firstItem="XlT-xK-ZLg" firstAttribute="trailing" secondItem="CAB-bm-h0d" secondAttribute="trailing" constant="20" id="8Md-uE-GyY"/>
+                            <constraint firstItem="XlT-xK-ZLg" firstAttribute="bottom" secondItem="CAB-bm-h0d" secondAttribute="bottom" constant="80" id="Jhr-IH-h31"/>
+                            <constraint firstItem="CAB-bm-h0d" firstAttribute="top" secondItem="azv-NI-WYm" secondAttribute="bottom" constant="20" id="mwN-UP-CAc"/>
+                            <constraint firstItem="azv-NI-WYm" firstAttribute="centerX" secondItem="hGe-NW-H4z" secondAttribute="centerX" id="pYZ-iw-Lro"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" image="cloud.sun.fill" catalog="system" id="gTZ-2L-6CU"/>
@@ -68,16 +137,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="X0a-dL-9LK" userLabel="MainStackView">
-                                <rect key="frame" x="107" y="238" width="200" height="420"/>
+                                <rect key="frame" x="107" y="239" width="200" height="418"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaL-YD-sSx">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="29"/>
+                                        <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
                                         <color key="textColor" systemColor="systemBlueColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Fi-vf-HYg" userLabel="FirstCurrencyStackView">
-                                        <rect key="frame" x="0.0" y="110" width="200" height="60"/>
+                                        <rect key="frame" x="0.0" y="109" width="200" height="60"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tr6-xm-jcj" userLabel="AmountToConvertLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
@@ -93,11 +162,12 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klS-B1-OaT" userLabel="ConvertActionButton">
-                                        <rect key="frame" x="0.0" y="250" width="200" height="60"/>
+                                        <rect key="frame" x="0.0" y="249" width="200" height="60"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="7Ya-cs-GUB"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Convert"/>
                                         <connections>
@@ -105,11 +175,11 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wzS-E9-zu9" userLabel="SecondCurrencyStackView">
-                                        <rect key="frame" x="0.0" y="390" width="200" height="30"/>
+                                        <rect key="frame" x="0.0" y="389" width="200" height="29"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HK1-Xc-2Y4" userLabel="ConvertedValueLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="29"/>
+                                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -126,16 +196,15 @@
                                     <constraint firstAttribute="width" constant="60" id="Cex-5N-c5i"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="EkK-k9-XD6">
-                                <rect key="frame" x="344" y="444.5" width="60" height="37"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="EkK-k9-XD6">
+                                <rect key="frame" x="317" y="458" width="60" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nxA-As-bSg"/>
                         <color key="backgroundColor" red="0.53725490200000003" green="0.81960784310000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qo3-us-pcZ" firstAttribute="bottom" secondItem="tr6-xm-jcj" secondAttribute="bottom" id="85i-5T-6ea"/>
-                            <constraint firstItem="EkK-k9-XD6" firstAttribute="centerX" secondItem="klS-B1-OaT" secondAttribute="centerX" id="AeA-Sy-6Ls"/>
-                            <constraint firstItem="EkK-k9-XD6" firstAttribute="centerY" secondItem="klS-B1-OaT" secondAttribute="centerY" id="DbN-FD-k0P"/>
                             <constraint firstItem="qo3-us-pcZ" firstAttribute="leading" secondItem="X0a-dL-9LK" secondAttribute="trailing" constant="10" id="Fo6-ve-8w6"/>
                             <constraint firstItem="qo3-us-pcZ" firstAttribute="top" secondItem="tr6-xm-jcj" secondAttribute="top" id="h1S-H1-d52"/>
                             <constraint firstItem="X0a-dL-9LK" firstAttribute="centerY" secondItem="P2b-Ht-zmH" secondAttribute="centerY" id="hCb-Ja-O06"/>
@@ -150,6 +219,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="banknote" catalog="system" width="128" height="78"/>
         <image name="cloud.sun.fill" catalog="system" width="128" height="95"/>
         <image name="eurosign.circle" catalog="system" width="128" height="121"/>
@@ -158,9 +228,6 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
