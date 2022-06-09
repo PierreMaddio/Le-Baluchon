@@ -3,6 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,10 +17,153 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="co3-3Y-zz2" kind="relationship" relationship="viewControllers" id="Xr4-sb-Nny"/>
+                        <segue destination="ASS-XL-zEs" kind="relationship" relationship="viewControllers" id="Qro-3k-QlZ"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYt-Le-hq4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-326" y="75"/>
         </scene>
+        <!--Weather-->
+        <scene sceneID="0D7-fl-FGa">
+            <objects>
+                <viewController id="ASS-XL-zEs" customClass="WeatherViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hGe-NW-H4z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQ2-Q8-drM">
+                                <rect key="frame" x="149.5" y="426" width="115" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Weather">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedWeatherButton:" destination="ASS-XL-zEs" eventType="touchUpInside" id="xoE-Qc-rnp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XlT-xK-ZLg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PQ2-Q8-drM" firstAttribute="centerX" secondItem="hGe-NW-H4z" secondAttribute="centerX" id="6SA-Eg-mVT"/>
+                            <constraint firstItem="PQ2-Q8-drM" firstAttribute="centerY" secondItem="hGe-NW-H4z" secondAttribute="centerY" id="XDz-fl-rmC"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Weather" image="cloud.sun.fill" catalog="system" id="gTZ-2L-6CU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Shb-KR-fG1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="804" y="451"/>
+        </scene>
+        <!--Currency-->
+        <scene sceneID="gJs-1A-Cxv">
+            <objects>
+                <viewController id="co3-3Y-zz2" customClass="CurrencyViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P2b-Ht-zmH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="X0a-dL-9LK" userLabel="MainStackView">
+                                <rect key="frame" x="107" y="238" width="200" height="420"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaL-YD-sSx">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Fi-vf-HYg" userLabel="FirstCurrencyStackView">
+                                        <rect key="frame" x="0.0" y="110" width="200" height="60"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tr6-xm-jcj" userLabel="AmountToConvertLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="fPW-h5-AXD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="tr6-xm-jcj" firstAttribute="centerX" secondItem="1Fi-vf-HYg" secondAttribute="centerX" id="Jhb-Yv-Lsj"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klS-B1-OaT" userLabel="ConvertActionButton">
+                                        <rect key="frame" x="0.0" y="250" width="200" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="7Ya-cs-GUB"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Convert"/>
+                                        <connections>
+                                            <action selector="tappedConvertButton:" destination="co3-3Y-zz2" eventType="touchUpInside" id="C6w-7B-ShI"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wzS-E9-zu9" userLabel="SecondCurrencyStackView">
+                                        <rect key="frame" x="0.0" y="390" width="200" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HK1-Xc-2Y4" userLabel="ConvertedValueLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="XOF-Kw-sAH"/>
+                                </constraints>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eurosign.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qo3-us-pcZ">
+                                <rect key="frame" x="317" y="348.5" width="60" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Cex-5N-c5i"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="EkK-k9-XD6">
+                                <rect key="frame" x="344" y="444.5" width="60" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nxA-As-bSg"/>
+                        <color key="backgroundColor" red="0.53725490200000003" green="0.81960784310000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qo3-us-pcZ" firstAttribute="bottom" secondItem="tr6-xm-jcj" secondAttribute="bottom" id="85i-5T-6ea"/>
+                            <constraint firstItem="EkK-k9-XD6" firstAttribute="centerX" secondItem="klS-B1-OaT" secondAttribute="centerX" id="AeA-Sy-6Ls"/>
+                            <constraint firstItem="EkK-k9-XD6" firstAttribute="centerY" secondItem="klS-B1-OaT" secondAttribute="centerY" id="DbN-FD-k0P"/>
+                            <constraint firstItem="qo3-us-pcZ" firstAttribute="leading" secondItem="X0a-dL-9LK" secondAttribute="trailing" constant="10" id="Fo6-ve-8w6"/>
+                            <constraint firstItem="qo3-us-pcZ" firstAttribute="top" secondItem="tr6-xm-jcj" secondAttribute="top" id="h1S-H1-d52"/>
+                            <constraint firstItem="X0a-dL-9LK" firstAttribute="centerY" secondItem="P2b-Ht-zmH" secondAttribute="centerY" id="hCb-Ja-O06"/>
+                            <constraint firstItem="X0a-dL-9LK" firstAttribute="centerX" secondItem="P2b-Ht-zmH" secondAttribute="centerX" id="r56-0i-53n"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Currency" image="banknote" catalog="system" id="ehs-aB-KD9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I5J-zz-Po4" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="-448"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="banknote" catalog="system" width="128" height="78"/>
+        <image name="cloud.sun.fill" catalog="system" width="128" height="95"/>
+        <image name="eurosign.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
