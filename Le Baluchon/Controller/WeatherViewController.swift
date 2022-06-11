@@ -16,7 +16,12 @@ class WeatherViewController: UIViewController {
     }
     
     @IBAction func tappedWeatherButton(_ sender: UIButton) {
-        weather.getWeather(lat: 37.39, lon: -122.08, apikey: "074b276c5f07fc244358b814afab7bbf")
+        weather.getWeather(lat: 37.39, lon: -122.08) { data in
+            print(String(data: data, encoding: .utf8) ?? "" as Any)
+        } failureCompletion: {
+            print("failureCompletion \(#function)")
+        }
+
     }
     
 
