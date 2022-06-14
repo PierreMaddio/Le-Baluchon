@@ -122,6 +122,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" image="cloud.sun.fill" catalog="system" id="gTZ-2L-6CU"/>
+                    <connections>
+                        <outlet property="destinationCityNameLabel" destination="Bco-5q-MLu" id="4P3-eU-kpR"/>
+                        <outlet property="destinationDescriptionLabel" destination="PWH-Qb-Vnd" id="UsL-4d-cMe"/>
+                        <outlet property="destinationTemperatureLabel" destination="DfZ-YD-1BQ" id="Sc2-di-R3i"/>
+                        <outlet property="originCityNameLabel" destination="Vc8-Ik-7JG" id="DN5-Xx-bH8"/>
+                        <outlet property="originDescriptionLabel" destination="Rw0-ad-SgH" id="0ck-jZ-QPe"/>
+                        <outlet property="originTemperatureLabel" destination="YqZ-Q6-43P" id="t3B-ci-MRM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Shb-KR-fG1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
