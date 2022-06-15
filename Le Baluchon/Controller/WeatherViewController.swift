@@ -18,6 +18,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var originTemperatureLabel: UILabel!
     @IBOutlet weak var originDescriptionLabel: UILabel!
     
+    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    
+    
     private let weather = WeatherService()
     
     var viewWillAppearForFirstTime: Bool = true
@@ -38,7 +42,6 @@ class WeatherViewController: UIViewController {
     
     private func fetchDataNewYork() {
         let coordinateNewYork = CLLocationCoordinate2D(latitude: 40.7127281, longitude: -74.0060152)
-        
         fetchDataForCity(with: coordinateNewYork, for: true)
         
     }
@@ -50,8 +53,9 @@ class WeatherViewController: UIViewController {
     }
     
     private func fetchDataForCity(with coordinates: CLLocationCoordinate2D, for destinationView: Bool) {
+        toggleActivityIndicator(shown: false)
         weather.getWeather(lat: coordinates.latitude, lon: coordinates.longitude) { data in
-            if let name = data.name, let temperature = data.main?.temp, let desc = data.weather?.description {
+            if let name = data.name, let temperature = data.main?.temp, let desc = data.weather?[0].weatherDescription {
                 DispatchQueue.main.async {
                     if destinationView == true {
                         self.destinationCityNameLabel.text = name
@@ -72,8 +76,14 @@ class WeatherViewController: UIViewController {
     
     
     @IBAction func tappedWeatherButton(_ sender: UIButton) {
+        toggleActivityIndicator(shown: true)
         fetchDataNewYork()
         fetchDataParis()
+    }
+    
+    private func toggleActivityIndicator(shown: Bool) {
+        refreshButton.isHidden = shown
+        loader.isHidden = !shown
     }
     
     private func kelvinsToCelsius(temperature: Double) -> Double {

@@ -8,6 +8,10 @@
 import UIKit
 
 class CurrencyViewController: UIViewController {
+    
+    @IBOutlet weak var amountToConvertLabel: UITextField!
+    
+
     private let currency = CurrencyService()
     
     override func viewDidLoad() {
@@ -17,7 +21,10 @@ class CurrencyViewController: UIViewController {
     
 
     @IBAction func tappedConvertButton(_ sender: UIButton) {
-        currency.getCurrency(from: "USD", to: "EUR", amount: 25)
+
+    }
+    
+    private func fetchDataConversion(amount: String) {
     }
     
 
