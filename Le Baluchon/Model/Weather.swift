@@ -57,8 +57,8 @@ struct Sys: Codable {
 
 // MARK: - WeatherElement
 struct WeatherElement: Codable {
-    let id: Int?
-    let main, weatherDescription, icon: String?
+    let id: Int
+    let main, weatherDescription, icon: String
 
     enum CodingKeys: String, CodingKey {
         case id, main

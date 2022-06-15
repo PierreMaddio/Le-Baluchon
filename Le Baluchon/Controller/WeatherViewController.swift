@@ -44,21 +44,23 @@ class WeatherViewController: UIViewController {
     }
     
     private func fetchDataParis() {
-        let coordinateParis = CLLocationCoordinate2D(latitude: 48.8588897, longitude: 2.320041)
+        let coordinateParis = CLLocationCoordinate2D(latitude: 48.8534100, longitude: 2.3488000)
         fetchDataForCity(with: coordinateParis, for: false)
         
     }
     
     private func fetchDataForCity(with coordinates: CLLocationCoordinate2D, for destinationView: Bool) {
         weather.getWeather(lat: coordinates.latitude, lon: coordinates.longitude) { data in
-            if let name = data.name, let temperature = data.main?.temp {
+            if let name = data.name, let temperature = data.main?.temp, let desc = data.weather?.description {
                 DispatchQueue.main.async {
                     if destinationView == true {
                         self.destinationCityNameLabel.text = name
-                        self.destinationTemperatureLabel.text = String(temperature)
+                        self.destinationTemperatureLabel.text = String(format: "%.0f", self.kelvinsToCelsius(temperature: temperature)) + "°"
+                        self.destinationDescriptionLabel.text = String(desc)
                     } else {
                         self.originCityNameLabel.text = name
-                        self.originTemperatureLabel.text = String(temperature)
+                        self.originTemperatureLabel.text = String(format: "%.0f", self.kelvinsToCelsius(temperature: temperature)) + "°"
+                        self.originDescriptionLabel.text = String(desc)
                     }
                 }
             }
@@ -67,18 +69,17 @@ class WeatherViewController: UIViewController {
             
         }
     }
-
+    
     
     @IBAction func tappedWeatherButton(_ sender: UIButton) {
         fetchDataNewYork()
         fetchDataParis()
     }
     
-    private func kelvinsToCelsius(temperature: Double) -> String {
+    private func kelvinsToCelsius(temperature: Double) -> Double {
         let conversion = temperature - 273.15
-        let aroundConversion = conversion
-        let stringConversion = String(aroundConversion)
-        return stringConversion
+        let aroundConversion = conversion.rounded()
+        return aroundConversion
     }
     
     
