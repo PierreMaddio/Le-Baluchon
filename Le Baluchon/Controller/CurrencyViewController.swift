@@ -10,8 +10,8 @@ import UIKit
 class CurrencyViewController: UIViewController {
     
     @IBOutlet weak var amountToConvertLabel: UITextField!
+    @IBOutlet weak var convertedValueLabel: UILabel!
     
-
     private let currency = CurrencyService()
     
     override func viewDidLoad() {
@@ -19,12 +19,21 @@ class CurrencyViewController: UIViewController {
         
     }
     
+    
 
     @IBAction func tappedConvertButton(_ sender: UIButton) {
-
+        fetchDataOfConversion(amount: amountToConvertLabel)
     }
     
-    private func fetchDataConversion(amount: String) {
+    private func fetchDataOfConversion(amount: UITextField) {
+        let amountString = self.amountToConvertLabel.text!
+        self.currency.getConversion(to: "USD", from: "EUR", amount: amountString) { data in
+            if let conversionResult = data?.result {
+                DispatchQueue.main.async {
+                    self.convertedValueLabel.text = String(conversionResult) + "$"
+                }
+            }
+        }
     }
     
 

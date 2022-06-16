@@ -259,7 +259,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v1p-0c-m4v" userLabel="Convert Stack View">
                                         <rect key="frame" x="0.0" y="140" width="200" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klS-B1-OaT" userLabel="ConvertActionButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klS-B1-OaT" userLabel="ConvertActionButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 <constraints>
@@ -267,7 +267,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Convert"/>
+                                                <state key="normal" title="Convert">
+                                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="tappedConvertButton:" destination="co3-3Y-zz2" eventType="touchUpInside" id="C6w-7B-ShI"/>
                                                 </connections>
@@ -322,6 +324,7 @@
                     <tabBarItem key="tabBarItem" title="Currency" image="banknote" catalog="system" id="ehs-aB-KD9"/>
                     <connections>
                         <outlet property="amountToConvertLabel" destination="tr6-xm-jcj" id="tCO-pj-CP7"/>
+                        <outlet property="convertedValueLabel" destination="HK1-Xc-2Y4" id="CmE-KL-VlW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5J-zz-Po4" sceneMemberID="firstResponder"/>

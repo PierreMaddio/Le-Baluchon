@@ -55,7 +55,7 @@ class WeatherViewController: UIViewController {
     private func fetchDataForCity(with coordinates: CLLocationCoordinate2D, for destinationView: Bool) {
         toggleActivityIndicator(shown: false)
         weather.getWeather(lat: coordinates.latitude, lon: coordinates.longitude) { data in
-            if let name = data.name, let temperature = data.main?.temp, let desc = data.weather?[0].weatherDescription {
+            if let name = data?.name, let temperature = data?.main?.temp, let desc = data?.weather?[0].weatherDescription {
                 DispatchQueue.main.async {
                     if destinationView == true {
                         self.destinationCityNameLabel.text = name
