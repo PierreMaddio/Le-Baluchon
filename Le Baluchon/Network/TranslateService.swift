@@ -8,7 +8,7 @@
 import Foundation
 
 class translateService {
-    static let translationAPIKey = "AIzaSyAEIm9kFV5fnrwDcibD40s-_wOo7qg1ArE"
+    static let translationAPIKey = ""
     
     func getTranslation(target: String, q: String, successCompletion: @escaping (Translation?) -> (Void), failureCompletion: @escaping () -> Void) {
         let urlPathStr = "https://translation.googleapis.com/language/translate/v2?target=\(target)&key=\(Self.translationAPIKey)&q=\(q)"
