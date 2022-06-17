@@ -57,6 +57,7 @@ class WeatherViewController: UIViewController {
         weather.getWeather(lat: coordinates.latitude, lon: coordinates.longitude) { data in
             if let name = data?.name, let temperature = data?.main?.temp, let desc = data?.weather?[0].weatherDescription {
                 DispatchQueue.main.async {
+                    // .map a refactoriser
                     if destinationView == true {
                         self.destinationCityNameLabel.text = name
                         self.destinationTemperatureLabel.text = String(format: "%.0f", self.kelvinsToCelsius(temperature: temperature)) + "°"
@@ -85,6 +86,10 @@ class WeatherViewController: UIViewController {
         refreshButton.isHidden = shown
         loader.isHidden = !shown
     }
+    
+//    private var toggleActivityIndicator1: Bool {
+//
+//    }
     
     private func kelvinsToCelsius(temperature: Double) -> Double {
         let conversion = temperature - 273.15

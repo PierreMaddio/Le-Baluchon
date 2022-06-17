@@ -158,7 +158,7 @@
         <!--Translate-->
         <scene sceneID="F1Y-89-jBL">
             <objects>
-                <viewController id="FIL-VN-k8W" sceneMemberID="viewController">
+                <viewController id="FIL-VN-k8W" customClass="TranslateViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R9E-RB-fKC">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +190,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Translate">
                                             <fontDescription key="titleFontDescription" name="Kefa-Regular" family="Kefa" pointSize="25"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="tappedTranslateButton:" destination="FIL-VN-k8W" eventType="touchUpInside" id="870-8n-OkK"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pd5-yL-EMj">
                                         <rect key="frame" x="83.333333333333343" y="301" width="83.333333333333343" height="29"/>
@@ -224,6 +227,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translate" image="person.2.fill" catalog="system" id="qhU-5Y-m5E"/>
+                    <connections>
+                        <outlet property="textToTranslate" destination="jwd-RY-XsC" id="yar-hI-CYZ"/>
+                        <outlet property="translatedText" destination="qkY-Qm-KS6" id="4CQ-wf-fwv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPz-B1-rK9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -325,6 +332,8 @@
                     <connections>
                         <outlet property="amountToConvertLabel" destination="tr6-xm-jcj" id="tCO-pj-CP7"/>
                         <outlet property="convertedValueLabel" destination="HK1-Xc-2Y4" id="CmE-KL-VlW"/>
+                        <outlet property="loader" destination="EkK-k9-XD6" id="LQU-9H-vyG"/>
+                        <outlet property="mainStackView" destination="X0a-dL-9LK" id="ahN-2U-Kbm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5J-zz-Po4" sceneMemberID="firstResponder"/>

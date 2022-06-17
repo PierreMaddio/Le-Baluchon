@@ -9,21 +9,32 @@ import UIKit
 
 class TranslateViewController: UIViewController {
 
+    @IBOutlet weak var textToTranslate: UITextField!
+    @IBOutlet weak var translatedText: UILabel!
+    
+    private let translation = translateService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func fetchDataForTranslation(text: UITextField) {
+        let textToTranslateString = self.textToTranslate.text!
+        self.translation.getTranslation(target: "en", q: textToTranslateString) { data in
+            if let translationResult = data?.data?.translations?[0].translatedText {
+                DispatchQueue.main.async {
+                    self.translatedText.text = translationResult
+                }
+            }
+        }failureCompletion: {
+            print("failureCompletion \(#function)")
+        }
     }
-    */
+    
+    @IBAction func tappedTranslateButton(_ sender: UIButton) {
+        fetchDataForTranslation(text: textToTranslate)
+    }
+    
 
 }

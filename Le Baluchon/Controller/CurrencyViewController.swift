@@ -11,11 +11,15 @@ class CurrencyViewController: UIViewController {
     
     @IBOutlet weak var amountToConvertLabel: UITextField!
     @IBOutlet weak var convertedValueLabel: UILabel!
+    @IBOutlet weak var mainStackView: UIStackView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    
     
     private let currency = CurrencyService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainStackView.center = loader.center
         
     }
     

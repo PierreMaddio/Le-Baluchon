@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum Result {
+    case success
+    case failure
+}
 class WeatherService {
     static let weatherAPIKey = "074b276c5f07fc244358b814afab7bbf"
     
@@ -16,7 +20,6 @@ class WeatherService {
             var requestURL = URLRequest(url: url)
             requestURL.httpMethod = "GET"
             let task = URLSession.shared.dataTask(with: requestURL) { data, response, error in
-                // Parsing du data CurrencyExchange
                 if let httpResponse = response as? HTTPURLResponse {
                     let decoder = JSONDecoder()
                     guard let data = data, httpResponse.statusCode == 200, let response = try? decoder.decode(Weather.self, from: data) else {
