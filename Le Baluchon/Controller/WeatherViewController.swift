@@ -52,12 +52,40 @@ class WeatherViewController: UIViewController {
         
     }
     
+    private func fetchDateForCity(with coordinates: CLLocationCoordinate2D, for destinationView: Bool) {
+        weather.getWeather(lat: 1, lon: 1) { result in
+            switch result {
+            case .success(let data):
+                guard
+                    let name = data.name,
+                    let temperature = data.main?.temp,
+                    let desc = data.weather?[0].weatherDescription
+                else {
+                    return
+                }
+                
+                if destinationView == true {
+                    self.destinationCityNameLabel.text = name
+                    self.destinationTemperatureLabel.text = String(format: "%.0f", self.kelvinsToCelsius(temperature: temperature)) + "°"
+                    self.destinationDescriptionLabel.text = String(desc)
+                } else {
+                    self.originCityNameLabel.text = name
+                    self.originTemperatureLabel.text = String(format: "%.0f", self.kelvinsToCelsius(temperature: temperature)) + "°"
+                    self.originDescriptionLabel.text = String(desc)
+                }
+                
+            case .failure:
+                print("failureCompletion \(#function)")
+            }
+            
+        }
+    }
+    
     private func fetchDataForCity(with coordinates: CLLocationCoordinate2D, for destinationView: Bool) {
         toggleActivityIndicator(shown: false)
         weather.getWeather(lat: coordinates.latitude, lon: coordinates.longitude) { data in
             if let name = data?.name, let temperature = data?.main?.temp, let desc = data?.weather?[0].weatherDescription {
                 DispatchQueue.main.async {
-                    // .map a refactoriser
                     if destinationView == true {
                         self.destinationCityNameLabel.text = name
                         self.destinationTemperatureLabel.text = String(format: "%.0f", self.kelvinsToCelsius(temperature: temperature)) + "°"
@@ -71,7 +99,6 @@ class WeatherViewController: UIViewController {
             }
         } failureCompletion: {
             print("failureCompletion \(#function)")
-            
         }
     }
     
@@ -87,9 +114,7 @@ class WeatherViewController: UIViewController {
         loader.isHidden = !shown
     }
     
-//    private var toggleActivityIndicator1: Bool {
-//
-//    }
+    
     
     private func kelvinsToCelsius(temperature: Double) -> Double {
         let conversion = temperature - 273.15

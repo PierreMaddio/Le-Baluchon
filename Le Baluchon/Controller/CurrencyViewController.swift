@@ -14,17 +14,13 @@ class CurrencyViewController: UIViewController {
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     
-    
     private let currency = CurrencyService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainStackView.center = loader.center
-        
     }
     
-    
-
     @IBAction func tappedConvertButton(_ sender: UIButton) {
         fetchDataOfConversion(amount: amountToConvertLabel)
     }
